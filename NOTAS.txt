@@ -1,0 +1,14 @@
+rails g scaffold project name:string workingdays:text
+
+rails g scaffold task name:string project:references
+
+rails g scaffold subtask task:references name:string day:integer
+
+rails db:migrate
+
+
+
+Ejecutar Test
+
+rails db:migrate RAILS_ENV=test
+rails test test/models/task_test.rb 

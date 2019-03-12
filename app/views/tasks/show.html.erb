@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @task.name %>
+</p>
+
+<p>
+  <strong>Project:</strong>
+  <%= @task.project.name %>
+</p>
+
+
+<table border="1">
+	<thead>
+		<tr>
+			<% @project.workingdays.each{|d| %>
+			<th>
+				<%= d %>
+			</th>
+			<% } %>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<% @project.workingdays.each{|d|
+				subtasks = @task.subtasks.select{|s| s.day == d} 
+			%>
+			<td>
+				<% subtasks.each{|s| %>
+					<%= s.name %> <br>
+				<% } %>
+			</td>
+			<% } %>
+		</tr>
+	</tbody>
+</table>
+
+<%= link_to 'Split', split_project_task_path(@project, @task) %>
+<br>
+<br>
+
+<%= link_to 'Edit', edit_project_task_path(@project, @task) %> |
+<%= link_to 'Back', project_tasks_path(@project) %>
