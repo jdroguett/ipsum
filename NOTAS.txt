@@ -12,3 +12,21 @@ Ejecutar Test
 
 rails db:migrate RAILS_ENV=test
 rails test test/models/task_test.rb 
+
+
+
+NOTA: 
+
+Sólo testeado para arreglos de máximo una semana, por ejemplo:
+
+[1,2,3,4,5]
+[1,2,3]
+[3,4,5,6,7,1,2]
+
+
+
+Funcionamiento incorrecto para arreglos con días repetidos;
+[3,4,5,6,7,1,2,3,4]
+[1,2,3,1,2]
+
+
